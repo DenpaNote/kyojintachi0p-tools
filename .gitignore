@@ -1,0 +1,9 @@
+*.ttf
+*.otf
+*.ttc
+*.dat
+SEI_*
+DF_*
+*.xlsx
+*.swf
+.DS_Store
