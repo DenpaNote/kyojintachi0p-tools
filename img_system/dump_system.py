@@ -15,15 +15,6 @@ rows = cursor.fetchall()
 
 dump_json = []
 
-def safe_min(a, b):
-    if a == -1 and b == -1:
-        raise ValueError("Both values are -1")
-    if a == -1:
-        return b
-    if b == -1:
-        return a
-    return min(a, b)
-
 for row in rows:
     id_ = row[0]
     filename = row[1]
@@ -38,8 +29,7 @@ for row in rows:
     if filename.endswith(".png"):
         data = data[data.find(b"\x89PNG"):]
     elif filename.endswith(".swf"):
-        index = safe_min(data.find(b"CWS"), data.find(b"FWS"))
-        data = data[index:]
+        data = data[data.find(b"CWS"):]
     else:
         print(f"Unknown file type: {filename}")
     
